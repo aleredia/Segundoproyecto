@@ -13,18 +13,19 @@ class PostController extends Controller
     public function About ($param=null, $nombre=null){
         $datos=['parametro'=>$param, 'nombre' =>$nombre];
         return view('about', $datos);
-        //return view
+        //return view('about',compact('param','nombre'));
     }
 
     public function Contacto (){
         return view('contacto', ['mensaje'=> 'Esto es un mensaje']);
     }
 
-    public function llamadi_componente(){
+    public function llamado_componente(){
         return view ('llamadocomponente');
     }
 
     public function principal(){
         return view('principal');
     }
+
 }

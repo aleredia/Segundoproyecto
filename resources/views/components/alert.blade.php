@@ -1,0 +1,37 @@
+@props(['type'=>'Info'])<!--Si en dado caso no le pasamos el valor de $type, el valor por defecto sería "info" -->
+<!--Todo lo que se encuentre dentro de la siguiente directiva se va a trabajar con código php -->
+@php
+    switch ($type) {
+        case 'Info':
+        //COncatenamos el valor de variable validando que el contenido sea igual al case que se está leyendo en estos momentos.
+            $title = $title ?? 'Info alert!';
+            $class = "text-blue-800 bg-blue-50 dark:text-blue-300";
+            break;
+        case 'Danger':
+            $title =$title ?? 'Danger alert!';
+            $class = "text-red-800 bg-blue-50 dark:text-red-300";
+            break; 
+        case 'Warning':
+            $title =$title ?? 'Warning alert!';
+            $class = "text-yellow-800 bg-blue-50 dark:text-yellow-300";
+            break; 
+        case 'Success':
+            $title =$title ?? 'Success alert!';
+            $class = "text-green-800 bg-blue-50 dark:text-green-300";
+            break;          
+        
+        default:
+            $title =$title ?? 'Info alert!';
+            $class = "text-blue-800 bg-blue-50 dark:text-blue-300";
+            break;
+    }
+@endphp
+<div {{$attributes ->merge(['class'=>'p-4 text-sm rounded-lg'.$class])}} role="alert">
+    <span class="font-medium">{{$title}}</span>{{$slot}}
+    <!--
+    Podemos imprimir los atributos que se le pasan y mediante la función merge unimos
+    -->
+<p>
+    {{$attributes}}
+</p>
+</div>
